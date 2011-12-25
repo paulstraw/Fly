@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="Fly (jQuery Plugin) Demo">
+		<meta name="designer" content="Paul Straw">
+		<meta name="developer" content="Paul Straw">
+		<meta name="viewport" content="width=device-width initial-scale=1 maximum-scale=1">
+
+		<title>Fly (jQuery Plugin) Demo</title>
+
+		<link rel="shortcut icon" href="img/favicon.png">
+		<link rel="stylesheet" href="demo.css">
+		<link rel="stylesheet" href="../fly.css">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+		<script src="../fly.js"></script>
+		<script src="demo.js"></script>
+	</head>
+
+	<body>
+		<div id="header">
+			<div class="inner group">
+				<h1>Fly</h1>
+
+				<h3><a href="https://github.com/paulstraw/Fly">You probably just want the GitHub link, right?</a></h3>
+			</div>
+
+			<nav>
+				<div class="inner group">
+					<ul>
+						<li><a href="#about">About</a></li>
+						<li><a href="#options">Options</a></li>
+						<li><a href="#demos">Demos</a></li>
+					</ul>
+				</div>
+			</nav>
+		</div id="header">
+
+		<div class="inner" id="wrapper">
+			<div id="about">
+				<h2>About</h2>
+
+				<p>Fly is a jQuery plugin for making awesome carousels. It shows standard navigation on desktops, and is touch-based on mobile devices. It also resizes itself to fit each slide's height, so you can use it with photos or content of different aspect ratios.</p>
+
+				<p>Using Fly is pretty simple. Set up a <code>&lt;ul&gt;</code> like normal, then call <code>$('#myUl').fly();</code>. Each slide should be the same width, but their heights can vary; Fly adjusts its height for each slide.</p>
+
+				<p>Want to use it? You can snag the latest version of Fly from <a href="https://github.com/paulstraw/Fly">GitHub</a>.</p>
+			</div>
+
+			<div id="options">
+				<h2>Options</h2>
+
+				<p>Fly is brand new, and doesn't really have any options just yet. If there's an option or change you'd like to see, feel free to submit a new issue at the <a href="https://github.com/paulstraw/Fly/issues">GitHub repository</a>.</p>
+			</div>
+
+			<ul id="demos">
+				<li>
+					<h2>Pictures</h2>
+
+					<ul id="pictureDemo">
+						<li><img src="img/1.jpg"></li>
+						<li><img src="img/2.jpg"></li>
+						<li><img src="img/3.jpg"></li>
+						<li><img src="img/4.jpg"></li>
+						<li><img src="img/5.jpg"></li>
+					</ul>
+
+					<pre><code>$('#pictureDemo').fly();</code></pre>
+				</li>
+
+				<li>
+					<h2>HTML Content</h2>
+
+					<ul id="htmlDemo">
+						<li>lorem ipsum</li>
+						<li>dolor sit</li>
+						<li>amet</li>
+						<li>blah</li>
+						<li>blah blah</li>
+					</ul>
+
+					<pre><code>$('#htmlDemo').fly();</code></pre>
+				</li>
+			</ul>
+		</div>
+
+		<div id="footer">
+			<p>Fly was created by <a href="http://paulstraw.com">Paul Straw</a> while working on another thing that he's not ready to show off yet. It's licensed under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.</p>
+			<p>All the stuff on this page © 2011 Paul Straw, natch.</p>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,152 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/* Clearfix: */
+.group:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+* html .group { height: 1%; }
+*:first-child+html .group { min-height: 1px; }
+/* End clearfix */
+
+html {
+	overflow-y: scroll;
+}
+
+body, input, select, button, textarea {
+	font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	color: #2C333E;
+}
+
+body {
+	background: #B0BACB;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+a {
+	color: #2C333E;
+	border-bottom: 1px solid #2C333E;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.inner {
+	width: 960px;
+	margin: 0 auto;
+}
+
+#header {
+	background: #2B333E;
+	color: #F4F4F4;
+	margin-bottom: 48px;
+	padding: 3px 0 0;
+}
+
+#header nav {
+	margin-top: 12px;
+	background: #36485D;
+	padding: 6px 0;
+	font-weight: bold;
+	border-top: 1px solid #56687D;
+}
+
+#header nav ul {
+	float: left;
+	border-left: 1px solid #26384D;
+	border-right: 1px solid #46586D;
+}
+
+#header nav li {
+	float: left;
+	padding: 0 24px;
+	border-left: 1px solid #46586D;
+	border-right: 1px solid #26384D;
+}
+
+h1 {
+	font-size: 48px;
+	line-height: 48px;
+	float: left;
+}
+
+h2 {
+	font-size: 24px;
+	margin-bottom: 18px;
+}
+
+h3 {
+	float: right;
+	margin-top: 18px;
+	font-size: 14px;
+}
+
+#header a {
+	color: #F4F4F4;
+	border: 0;
+}
+
+ul {
+	list-style: none;
+}
+
+#wrapper {
+	padding-bottom: 48px;
+}
+
+#about, #options {
+	margin-bottom: 48px;
+}
+
+p {
+	margin: 12px 0;
+}
+
+h2 + p {
+	margin-top: 0;
+}
+
+.flyWrapper {
+	box-shadow: 0 3px 12px rgba(43, 51, 62, 0.8);
+}
+
+code {
+	font-family: "Inconsolata", "Consolas", "Monaco", monospace;
+	font-size: 14px;
+	background: #DAD1C0;
+	color: #3A3732;
+	border: 1px solid #EAE1D0;
+	border-top: 1px solid #FAF1E0;
+	padding: 1px;
+
+	margin: 24px 0;
+}
+
+pre code {
+	display: block;
+	padding: 6px 12px;
+}
+
+#footer {
+	font-size: 12px;
+	margin-bottom: 24px;
+}
+
+#footer p {
+	text-align: center;
+	margin: 6px auto;
+	width: 480px;
+}
+
+@media screen and (max-width: 480px) {
+	.inner {
+		width: 100%;
+	}
+
+	.inner {
+		width: 95%;
+		margin: 0 auto;
+	}
+}

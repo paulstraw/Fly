@@ -1,0 +1,57 @@
+.flyWrapper {
+	-webkit-transition: height 240ms ease-out;
+	-moz-transition: height 240ms ease-out;
+	-ms-transition: height 240ms ease-out;
+	-o-transition: height 240ms ease-out;
+	transition: height 240ms ease-out;
+}
+
+.flyNav {
+	width: 60px;
+	position: absolute;
+	height: 100%;
+	text-decoration: none;
+	background: rgba(0, 0, 0, 0.4);
+	opacity: 0.5;
+
+	-webkit-transition: opacity 120ms ease-in;
+	-moz-transition: opacity 120ms ease-in;
+	-ms-transition: opacity 120ms ease-in;
+	-o-transition: opacity 120ms ease-in;
+	transition: opacity 120ms ease-in;
+}
+
+.flyNav:hover {
+	opacity: 1;
+}
+
+.flyNav:before {
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 50%;
+	top: 50%;
+	margin-top: -20px;
+	border-style: solid;
+	border-width: 20px;
+	border-color: transparent;
+	content: "";
+}
+
+.flyNav.prevSlide {
+	left: 0;
+}
+
+.flyNav.prevSlide:before {
+	border-right-color: #fff;
+	margin-left: -30px;
+}
+
+.flyNav.nextSlide {
+	right: 0;
+}
+
+.flyNav.nextSlide:before {
+	border-left-color: #fff;
+	margin-left: -10px;
+}
