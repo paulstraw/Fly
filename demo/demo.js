@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	$('#pictureDemo').fly();
 
-	$('#htmlDemo').fly();
+	$('#htmlDemo').fly({
+		pictureSlider: false
+	});
 });

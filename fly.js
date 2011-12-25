@@ -6,44 +6,59 @@
 (function($) {
 	$.fn.fly = function(opts) {
 		var settings = $.extend({
-			wrapperPos: 'relative'
+			wrapperPos: 'relative',
+			pictureSlider: true
 		}, opts);
 
 		return this.each(function() {
-			var slider = $(this),
+			var that = this,
+				flyUl = $(that),
 				wrapper = $('<div>').addClass('flyWrapper'),
-				slides = slider.find('li'),
+				slides = flyUl.find('li'),
 				activeSlide = slides.first().addClass('activeSlide'),
-				container = slider.parents('.top'),
 				maxLeft;
 
-			settings.slideWidth = settings.slideWidth || slider.width();
+			settings.slideWidth = settings.slideWidth || flyUl.width();
+
+			settings.afterChange = typeof settings.afterChange == 'function' ?
+				settings.afterChange :
+				null;
 
 			wrapper.css({
 				overflow: 'hidden',
 				position: settings.wrapperPos,
-				width: slider.width()
+				width: flyUl.width()
 			});
 
-			slider.wrap(wrapper).css({
+			flyUl.wrap(wrapper).css({
 				position: 'relative',
 				width: settings.slideWidth * slides.length
 			});
 
 			//redefining wrapper because jQuery.wrap() clones elements
-			wrapper = slider.parent();
+			wrapper = flyUl.parent();
 
 			slides.css({
-				float: 'left'
-			}).find('img').css({
+				float: 'left',
 				width: settings.slideWidth
 			});
 
-			//resize container height to fit the first image
-			slider.find('img:first').bind('load', function() {
-				container.height($(this).height());
-				wrapper.height($(this).height());
-			});
+			//resize wrapper height to fit the first slide
+			if (settings.pictureSlider) {
+				flyUl.find('img:first').bind('load', function() {
+					wrapper.height($(this).height());
+					//flyUl.height($(this).height());
+				});
+
+				//oh css, you crazy
+				flyUl.find('img').css({
+					width: settings.slideWidth,
+					verticalAlign: 'bottom'
+				});
+			} else {
+				wrapper.height(slides.eq(0).outerHeight());
+				//flyUl.height(slides.eq(0).height());
+			}
 
 			maxLeft = - (settings.slideWidth * (slides.length - 1));
 
@@ -56,7 +71,7 @@
 						distanceY,
 						startX;
 
-					slider.bind({
+					flyUl.bind({
 						touchstart: function(e) {
 							e = e.originalEvent;
 
@@ -77,25 +92,26 @@
 							touch.x2 = e.touches[lastTouch].pageX;
 							touch.y2 = e.touches[lastTouch].pageY;
 							distanceX = touch.x1 - touch.x2;
-							distanceY = touch.y1 - touch.y2;
+							distanceY = Math.abs(touch.y1 - touch.y2);
 
-							if (distanceX === 0) return;
-							if (distanceX > 2 || distanceY === 0) e.preventDefault();
+							var absX = Math.abs(distanceX);
+
+							if (absX > 2 || distanceY < 2) e.preventDefault();
 
 							touch.x1 = touch.x2;
 							touch.y1 = touch.y2;
 
-							var curLeft = parseInt(slider.css('left'), 10);
+							var curLeft = parseInt(flyUl.css('left'), 10);
 
 							if (curLeft >= 0 && distanceX <= 0) { //stop at left end
-								slider.css('left', 0);
+								flyUl.css('left', 0);
 								return;
 							} else if (curLeft <= maxLeft && distanceX >= 0) { //stop at right end
-								slider.css('left', maxLeft);
+								flyUl.css('left', maxLeft);
 								return;
 							}
 
-							slider.css({
+							flyUl.css({
 								left: curLeft - distanceX
 							});
 						},
@@ -111,26 +127,28 @@
 
 							if (delta > settings.slideWidth / 3) {
 								if (dir == 'next' && next.length) {
-									slider.animate({
+									flyUl.animate({
 										left: - next.position().left
 									}, function() {
-										wrapper.height(activeSlide.find('img').height());
-										container.height(activeSlide.find('img').height());
+										wrapper.height(activeSlide.outerHeight());
+
+										settings.afterChange && settings.afterChange(that);
 									});
 									activeSlide.removeClass('activeSlide');
 									activeSlide = next.addClass('activeSlide');
 								} else if (dir == 'prev' && prev.length) {
-									slider.animate({
+									flyUl.animate({
 										left: - prev.position().left
 									}, function() {
-										wrapper.height(activeSlide.find('img').height());
-										container.height(activeSlide.find('img').height());
+										wrapper.height(activeSlide.outerHeight());
+
+										settings.afterChange && settings.afterChange(that);
 									});
 									activeSlide.removeClass('activeSlide');
 									activeSlide = prev.addClass('activeSlide');
 								}
 							} else {
-								slider.animate({
+								flyUl.animate({
 									left: - activeSlide.position().left
 								});
 							}
@@ -152,7 +170,7 @@
 							el.addClass('sliding');
 
 							var dir = el.hasClass('prevSlide') ? 'prev' : 'next',
-								curLeft = parseInt(slider.css('margin-left'), 10),
+								curLeft = parseInt(flyUl.css('margin-left'), 10),
 								newActive,
 								newLeft;
 
@@ -180,13 +198,14 @@
 								newLeft = curLeft + (dir == 'prev' ? + settings.slideWidth : - settings.slideWidth);
 							}
 
-							slider.animate({
+							flyUl.animate({
 								marginLeft: newLeft
 							}, function() {
 								el.removeClass('sliding');
 
-								wrapper.height(activeSlide.find('img').height());
-								container.height(activeSlide.find('img').height());
+								wrapper.height(activeSlide.outerHeight());
+
+								settings.afterChange && settings.afterChange(that);
 							});
 						}
 					});

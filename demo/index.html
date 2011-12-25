@@ -43,7 +43,7 @@
 			<div id="about">
 				<h2>About</h2>
 
-				<p>Fly is a jQuery plugin for making awesome carousels. It shows standard navigation on desktops, and is touch-based on mobile devices. It also resizes itself to fit each slide's height, so you can use it with photos or content of different aspect ratios.</p>
+				<p>Fly is a jQuery plugin for making awesome carousels. It shows standard navigation on desktops, and is touch-based on mobile devices (open this page on your smartphone to try it out). It also resizes itself to fit each slide's height, so you can use it with photos or content of different aspect ratios.</p>
 
 				<p>Using Fly is pretty simple. Set up a <code>&lt;ul&gt;</code> like normal, then call <code>$('#myUl').fly();</code>. Each slide should be the same width, but their heights can vary; Fly adjusts its height for each slide.</p>
 
@@ -53,7 +53,12 @@
 			<div id="options">
 				<h2>Options</h2>
 
-				<p>Fly is brand new, and doesn't really have any options just yet. If there's an option or change you'd like to see, feel free to submit a new issue at the <a href="https://github.com/paulstraw/Fly/issues">GitHub repository</a>.</p>
+				<p>Fly is brand new, and doesn't really have many options just yet. If there's an option or change you'd like to see, feel free to submit a new issue at the <a href="https://github.com/paulstraw/Fly/issues">GitHub repository</a>. Here are the current options, along with their defaults and such:</p>
+
+				<pre><code>$('#someList').fly({
+	pictureSlider: true, //boolean, change this if you're using HTML content instead of just img tags
+	afterChange: null, //function(yourList) (called after each slide change)
+});</pre></code>
 			</div>
 
 			<ul id="demos">
@@ -75,19 +80,21 @@
 					<h2>HTML Content</h2>
 
 					<ul id="htmlDemo">
-						<li>lorem ipsum</li>
-						<li>dolor sit</li>
-						<li>amet</li>
-						<li>blah</li>
-						<li>blah blah</li>
+						<li>I am 300 pixels tall</li>
+						<li>I am 200 pixels tall</li>
+						<li>I am 220 pixels tall</li>
+						<li>I am 320 pixels tall</li>
+						<li>I am 250 pixels tall</li>
 					</ul>
 
-					<pre><code>$('#htmlDemo').fly();</code></pre>
+					<pre><code>$('#htmlDemo').fly({
+	pictureSlider: false
+});</code></pre>
 				</li>
 			</ul>
 		</div>
 
-		<div id="footer">
+		<div id="footer" class="inner">
 			<p>Fly was created by <a href="http://paulstraw.com">Paul Straw</a> while working on another thing that he's not ready to show off yet. It's licensed under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.</p>
 			<p>All the stuff on this page © 2011 Paul Straw, natch.</p>
 		</div>

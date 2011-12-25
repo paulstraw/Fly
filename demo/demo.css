@@ -112,6 +112,39 @@ h2 + p {
 	box-shadow: 0 3px 12px rgba(43, 51, 62, 0.8);
 }
 
+#htmlDemo {
+	background: #36485D;
+	height: 100%;
+}
+
+#htmlDemo li {
+	color: #F4F4F4;
+	text-align: center;
+	font-weight: bold;
+	padding-top: 50px;
+	font-size: 30px;
+}
+
+#htmlDemo li:nth-child(1) {
+	height: 250px;
+}
+
+#htmlDemo li:nth-child(2) {
+	height: 150px;
+}
+
+#htmlDemo li:nth-child(3) {
+	height: 170px;
+}
+
+#htmlDemo li:nth-child(4) {
+	height: 270px;
+}
+
+#htmlDemo li:nth-child(5) {
+	height: 200px;
+}
+
 code {
 	font-family: "Inconsolata", "Consolas", "Monaco", monospace;
 	font-size: 14px;
@@ -127,6 +160,9 @@ code {
 pre code {
 	display: block;
 	padding: 6px 12px;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
 }
 
 #footer {
@@ -137,7 +173,7 @@ pre code {
 #footer p {
 	text-align: center;
 	margin: 6px auto;
-	width: 480px;
+	max-width: 480px;
 }
 
 @media screen and (max-width: 480px) {
