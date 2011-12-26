@@ -1,7 +1,7 @@
 Fly
 =====
 
-Fly is a jQuery plugin for making awesome carousels. It shows standard navigation on desktops, and is touch-based on mobile devices (open this page on your smartphone to try it out). It also resizes itself to fit each slide's height, so you can use it with photos or content of different aspect ratios.
+Fly is a jQuery plugin for making awesome carousels. It shows standard navigation on desktops, and is touch-based on mobile devices (open [this page](http://paulstraw.com/fly) on your smartphone to try it out). It also resizes itself to fit each slide's height, so you can use it with photos or content of different aspect ratios.
 
 Using Fly is pretty simple. Set up a `<ul>` like normal, then call `$('#myUl').fly();`. Each slide should be the same width, but their heights can vary; Fly adjusts its height for each slide.
 
